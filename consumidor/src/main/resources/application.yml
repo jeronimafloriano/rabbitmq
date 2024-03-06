@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    addreases: "localhost:5672"
+    username: guest
+    password: guest
+    queue: hello
