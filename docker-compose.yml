@@ -1,0 +1,23 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: unless-stopped
+  produtor:
+    build:
+      context: ./produtor
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+    restart: unless-stopped
+  consumidor:
+    build:
+      context: ./consumidor
+      dockerfile: Dockerfile
+    depends_on:
+      - rabbitmq
+    restart: unless-stopped
+  
